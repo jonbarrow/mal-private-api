@@ -39,6 +39,24 @@ class MalClient {
 		};
 	}
 
+	async deviceTokens(token, device) {
+		const response = await got.post(`${this._apiBase}/users/@me/device_tokens`, {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded',
+				'authorization': 'Bearer ' + this._session.tokens.access
+			},
+			body: querystring.stringify({
+				device_token: token,
+				device_type: device,
+			})
+		});
+
+		// got does not allow the `json` option to be set on POST requests with a non-JSON body. Have to manually parse response
+		const data = JSON.parse(response.body);
+
+		return data;
+	}
+
 	async login(username, password) {
 		const response = await this._postRequest('/auth/token', querystring.stringify({
 			client_id: this._clientId,

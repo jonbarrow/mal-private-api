@@ -170,3 +170,38 @@ Adds an anime to your list or updates an existing entry. Requires login
 ## [DELETE] /anime/{id}/my_list_status
 
 Removes an anime from your list. Requires login
+
+## [GET] /users/@me
+
+Gets user profile data. Requires login
+
+### Query Parameters
+
+| Name   | Description                                                    | Optional |
+|--------|----------------------------------------------------------------|----------|
+| fields | Data fields to be returned with each result (see #data-fields) | True     |
+
+## [GET] /users/@me/animelist
+
+Gets user profile anime list. Requires login
+
+### Query Parameters
+
+| Name   | Description                                                                               | Optional |
+|--------|-------------------------------------------------------------------------------------------|----------|
+| status | Watching status (`plan_to_watch`, `completed`, `watching`, `on_hold`, `dropped`)          | True     |
+| sort   | Sort type (`list_score`, `anime_start_date`, `anime_title`, `list_updated_at`)            | True     |
+| limit  | Return count upper limit                                                                  | True     |
+| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
+| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+
+## [POST] /users/@me/device_tokens
+
+Returns a list of device tokens? (Always returns an empty array). Requires login
+
+### Body
+
+| Parameter    | Value                          |
+|--------------|--------------------------------|
+| device_token | Firebase token?                |
+| device_type  | Device type string (`android`) |
