@@ -34,7 +34,7 @@ Some endpoints take a `fields` parameter which is a set of fields used to determ
 
 Base URL for the API is https://api.myanimelist.net/v0.8 (at least in the version of the app I reversed)
 
-## /anime/search
+## [GET] /anime/search
 
 Runs a search on the database based on the `status` parameter. Contrary to what the endpoint suggests this does _NOT_ run a query search
 
@@ -46,4 +46,27 @@ Runs a search on the database based on the `status` parameter. Contrary to what 
 | status | Anime airing status to search by (only `currently_airing` and `not_yet_aired` are accepted) | False    |
 | limit  | Return count upper limit                                                                    | True     |
 | offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20)   | True     |
+| fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+
+## [GET] /anime
+
+Runs a search on the database based on the `q` parameter
+
+### Query Parameters
+
+| Name   | Description                                                                                 | Optional |
+|--------|---------------------------------------------------------------------------------------------|----------|
+| q      | query string (is ignored by API)                                                            | False    |
+| limit  | Return count upper limit                                                                    | True     |
+| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20)   | True     |
+| fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+
+## [GET] /anime/{id}
+
+Gets anime details
+
+### Query Parameters
+
+| Name   | Description                                                                                 | Optional |
+|--------|---------------------------------------------------------------------------------------------|----------|
 | fields | Data fields to be returned with each result (see #data-fields)                              | True     |
