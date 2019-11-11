@@ -37,6 +37,7 @@ Some endpoints take a `fields` parameter which is a set of fields used to determ
 ## BaseURL
 
 Base URL for the API is https://api.myanimelist.net/v0.8 (at least in the version of the app I reversed)
+
 The oAuth refresh token endpoint `/oauth2/token` is the only endpoint which uses a different base, being https://myanimelist.net/v1
 
 ## [POST] /auth/token
@@ -135,6 +136,18 @@ Gets anime releasing/released in a given season
 | Name   | Description                                                                               | Optional |
 |--------|-------------------------------------------------------------------------------------------|----------|
 | sort   | Sort type (`anime_num_list_users` or `anime_score`)                                       | True     |
+| limit  | Return count upper limit                                                                  | True     |
+| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
+| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+
+## [GET] /anime/suggestions
+
+Gets anime suggestions for logged in user. Requires login
+
+### Query Parameters
+
+| Name   | Description                                                                               | Optional |
+|--------|-------------------------------------------------------------------------------------------|----------|
 | limit  | Return count upper limit                                                                  | True     |
 | offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
 | fields | Data fields to be returned with each result (see #data-fields)                            | True     |
