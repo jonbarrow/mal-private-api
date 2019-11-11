@@ -125,3 +125,16 @@ Gets top anime by rank and ranking type
 | limit        | Return count upper limit                                                                  | True     |
 | offset       | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
 | fields       | Data fields to be returned with each result (see #data-fields)                            | True     |
+
+## [GET] /anime/season/{year}/{season}
+
+Gets anime releasing/released in a given season
+
+### Query Parameters
+
+| Name   | Description                                                                               | Optional |
+|--------|-------------------------------------------------------------------------------------------|----------|
+| sort   | Sort type (`anime_num_list_users` or `anime_score`)                                       | True     |
+| limit  | Return count upper limit                                                                  | True     |
+| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
+| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
