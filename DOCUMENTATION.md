@@ -59,12 +59,6 @@ Logs in a user with a username and password. Returns an oAuth authorization and 
 
 Refreshes a login session with an oAuth refresh token. Returns an oAuth authorization and refresh token
 
-### Headers
-
-| Name         | Value                             |
-|--------------|-----------------------------------|
-| Content-Type | application/x-www-form-urlencoded |
-
 ### Body
 
 | Parameter     | Value               |
