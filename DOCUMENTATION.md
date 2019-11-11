@@ -112,3 +112,16 @@ Gets anime details
 | Name   | Description                                                                                 | Optional |
 |--------|---------------------------------------------------------------------------------------------|----------|
 | fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+
+## [GET] /anime/ranking
+
+Gets top anime by rank and ranking type
+
+### Query Parameters
+
+| Name         | Description                                                                               | Optional |
+|--------------|-------------------------------------------------------------------------------------------|----------|
+| ranking_type | Sort type (`trend` or `bypopularity`)                                                     | True     |
+| limit        | Return count upper limit                                                                  | True     |
+| offset       | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
+| fields       | Data fields to be returned with each result (see #data-fields)                            | True     |
