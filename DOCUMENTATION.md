@@ -2,6 +2,10 @@
 
 All responses return JSON
 
+# Client ID
+
+Some endpoints are protected with a client ID. This ID is stored in plaintext in the official MAL app, and seems to be a static value. The client ID is `6114d00ca681b7701d1e15fe11a4987e`
+
 # Data Fields
 
 Some endpoints take a `fields` parameter which is a set of fields used to determine what data is to be returned about the query
@@ -33,6 +37,44 @@ Some endpoints take a `fields` parameter which is a set of fields used to determ
 ## BaseURL
 
 Base URL for the API is https://api.myanimelist.net/v0.8 (at least in the version of the app I reversed)
+The oAuth refresh token endpoint `/oauth2/token` is the only endpoint which uses a different base, being https://myanimelist.net/v1
+
+## [POST] /auth/token
+
+Logs in a user with a username and password. Returns an oAuth authorization and refresh token
+
+### Headers
+
+| Name         | Value                             |
+|--------------|-----------------------------------|
+| Content-Type | application/x-www-form-urlencoded |
+
+### Body
+
+| Parameter  | Value            |
+|------------|------------------|
+| client_id  | App client ID    |
+| username   | Account username |
+| password   | Account password |
+| grant_type | `password`       |
+
+## [POST] /oauth2/token
+
+Refreshes a login session with an oAuth refresh token. Returns an oAuth authorization and refresh token
+
+### Headers
+
+| Name         | Value                             |
+|--------------|-----------------------------------|
+| Content-Type | application/x-www-form-urlencoded |
+
+### Body
+
+| Parameter     | Value               |
+|---------------|---------------------|
+| client_id     | App client ID       |
+| refresh_token | oAuth refresh token |
+| grant_type    | `refresh_token`     |
 
 ## [GET] /anime/search
 
