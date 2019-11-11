@@ -151,3 +151,22 @@ Gets anime suggestions for logged in user. Requires login
 | limit  | Return count upper limit                                                                  | True     |
 | offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
 | fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+
+## [PUT] /anime/{id}/my_list_status
+
+Adds an anime to your list or updates an existing entry. Requires login
+
+### Body
+
+| Parameter            | Value                                                                            |
+|----------------------|----------------------------------------------------------------------------------|
+| status               | Watching status (`plan_to_watch`, `completed`, `watching`, `on_hold`, `dropped`) |
+| score                | User score (0 is no score, 1 is lowest score, 10 is highest score)               |
+| num_watched_episodes | Number of total episodes watched                                                 |
+| is_rewatching        | Bool (seems to not be returned by API?)                                          |
+| start_date           | Date started (seems to not be returned by API?)                                  |
+| finish_date          | Date completed (seems to not be returned by API?)                                |
+
+## [DELETE] /anime/{id}/my_list_status
+
+Removes an anime from your list. Requires login
