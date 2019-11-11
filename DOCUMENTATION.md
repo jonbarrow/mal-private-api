@@ -2,6 +2,8 @@
 
 All responses return JSON
 
+## > All `POST` requests are type `application/x-www-form-urlencoded`
+
 # Client ID
 
 Some endpoints are protected with a client ID. This ID is stored in plaintext in the official MAL app, and seems to be a static value. The client ID is `6114d00ca681b7701d1e15fe11a4987e`
@@ -44,12 +46,6 @@ The oAuth refresh token endpoint `/oauth2/token` is the only endpoint which uses
 
 Logs in a user with a username and password. Returns an oAuth authorization and refresh token
 
-### Headers
-
-| Name         | Value                             |
-|--------------|-----------------------------------|
-| Content-Type | application/x-www-form-urlencoded |
-
 ### Body
 
 | Parameter  | Value            |
@@ -88,8 +84,8 @@ Runs a search on the database based on the `status` parameter. Contrary to what 
 | q      | query string (is ignored by API)                                                            | True     |
 | status | Anime airing status to search by (only `currently_airing` and `not_yet_aired` are accepted) | False    |
 | limit  | Return count upper limit                                                                    | True     |
-| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20)   | True     |
-| fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+| offset | Result offset based on limit                                                                | True     |
+| fields | Data fields                                                                                 | True     |
 
 ## [GET] /anime
 
@@ -101,8 +97,8 @@ Runs a search on the database based on the `q` parameter
 |--------|---------------------------------------------------------------------------------------------|----------|
 | q      | query string (is ignored by API)                                                            | False    |
 | limit  | Return count upper limit                                                                    | True     |
-| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20)   | True     |
-| fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+| offset | Result offset based on limit                                                                | True     |
+| fields | Data fields                                                                                 | True     |
 
 ## [GET] /anime/{id}
 
@@ -110,9 +106,9 @@ Gets anime details
 
 ### Query Parameters
 
-| Name   | Description                                                                                 | Optional |
-|--------|---------------------------------------------------------------------------------------------|----------|
-| fields | Data fields to be returned with each result (see #data-fields)                              | True     |
+| Name   | Description | Optional |
+|--------|-------------|----------|
+| fields | Data fields | True     |
 
 ## [GET] /anime/ranking
 
@@ -120,12 +116,12 @@ Gets top anime by rank and ranking type
 
 ### Query Parameters
 
-| Name         | Description                                                                               | Optional |
-|--------------|-------------------------------------------------------------------------------------------|----------|
-| ranking_type | Sort type (`trend` or `bypopularity`)                                                     | True     |
-| limit        | Return count upper limit                                                                  | True     |
-| offset       | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
-| fields       | Data fields to be returned with each result (see #data-fields)                            | True     |
+| Name         | Description                           | Optional |
+|--------------|---------------------------------------|----------|
+| ranking_type | Sort type (`trend` or `bypopularity`) | True     |
+| limit        | Return count upper limit              | True     |
+| offset       | Result offset based on limit          | True     |
+| fields       | Data fields                           | True     |
 
 ## [GET] /anime/season/{year}/{season}
 
@@ -133,12 +129,12 @@ Gets anime releasing/released in a given season
 
 ### Query Parameters
 
-| Name   | Description                                                                               | Optional |
-|--------|-------------------------------------------------------------------------------------------|----------|
-| sort   | Sort type (`anime_num_list_users` or `anime_score`)                                       | True     |
-| limit  | Return count upper limit                                                                  | True     |
-| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
-| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+| Name   | Description                                         | Optional |
+|--------|-----------------------------------------------------|----------|
+| sort   | Sort type (`anime_num_list_users` or `anime_score`) | True     |
+| limit  | Return count upper limit                            | True     |
+| offset | Result offset based on limit                        | True     |
+| fields | Data fields                                         | True     |
 
 ## [GET] /anime/suggestions
 
@@ -146,11 +142,11 @@ Gets anime suggestions for logged in user. Requires login
 
 ### Query Parameters
 
-| Name   | Description                                                                               | Optional |
-|--------|-------------------------------------------------------------------------------------------|----------|
-| limit  | Return count upper limit                                                                  | True     |
-| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
-| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+| Name   | Description                  | Optional |
+|--------|------------------------------|----------|
+| limit  | Return count upper limit     | True     |
+| offset | Result offset based on limit | True     |
+| fields | Data fields                  | True     |
 
 ## [PUT] /anime/{id}/my_list_status
 
@@ -177,9 +173,9 @@ Gets user profile data. Requires login
 
 ### Query Parameters
 
-| Name   | Description                                                    | Optional |
-|--------|----------------------------------------------------------------|----------|
-| fields | Data fields to be returned with each result (see #data-fields) | True     |
+| Name   | Description | Optional |
+|--------|-------------|----------|
+| fields | Data fields | True     |
 
 ## [GET] /users/@me/animelist
 
@@ -187,13 +183,13 @@ Gets user profile anime list. Requires login
 
 ### Query Parameters
 
-| Name   | Description                                                                               | Optional |
-|--------|-------------------------------------------------------------------------------------------|----------|
-| status | Watching status (`plan_to_watch`, `completed`, `watching`, `on_hold`, `dropped`)          | True     |
-| sort   | Sort type (`list_score`, `anime_start_date`, `anime_title`, `list_updated_at`)            | True     |
-| limit  | Return count upper limit                                                                  | True     |
-| offset | Result offset based on limit (if limit is 10 and offset is 1, then returns results 10-20) | True     |
-| fields | Data fields to be returned with each result (see #data-fields)                            | True     |
+| Name   | Description                                                                      | Optional |
+|--------|----------------------------------------------------------------------------------|----------|
+| status | Watching status (`plan_to_watch`, `completed`, `watching`, `on_hold`, `dropped`) | True     |
+| sort   | Sort type (`list_score`, `anime_start_date`, `anime_title`, `list_updated_at`)   | True     |
+| limit  | Return count upper limit                                                         | True     |
+| offset | Result offset based on limit                                                     | True     |
+| fields | Data fields                                                                      | True     |
 
 ## [POST] /users/@me/device_tokens
 
