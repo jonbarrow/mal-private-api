@@ -173,7 +173,7 @@ Gets user profile data. Requires login
 
 ## [GET] /users/@me/animelist
 
-Gets user profile anime list. Requires login
+Gets user anime list. Requires login
 
 ### Query Parameters
 
