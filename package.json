@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "eslint": "^6.6.0",
-    "got": "^9.6.0"
+    "got": "^11.8.5"
   }
 }
